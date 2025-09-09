@@ -1,3 +1,5 @@
-fn main() {
-    println!("Implement me!");
-}
+mod email;
+mod random;
+mod tests;
+
+fn main() {}
