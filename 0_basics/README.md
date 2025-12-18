@@ -1,15 +1,15 @@
-Step 0: Become familiar with Rust basics
-========================================
+# Step 0: Become familiar with Rust basics
 
 __Estimated time__: 3 days
 
-Read through [the Rust Book][Rust Book], [Rust FAQ], and become familiar with basic [Rust] concepts, syntax, the memory model, and the type and module systems.
+Read through [the Rust Book][rust book], [Rust FAQ], and become familiar, [ Rust ][rust], with basic [Rust] concepts, syntax, the memory model, and the type and module systems.
 
-Polish your familiarity by completing [Rust By Example] and [Rustlings][rustlings].
+Polish your familiarity by completing [Rust By Example] and [Rustlings].
 
-Read through [the Cargo Book][Cargo Book] and become familiar with [Cargo] and its workspaces.
+Read through [the Cargo Book][cargo book] and become familiar with [Cargo] and its workspaces.
 
 After completing these steps, you should be able to answer (and understand why) the following questions:
+
 - What memory model does [Rust] have? Is it single-threaded or multiple-threaded? Is it synchronous or asynchronous?
 - What runtime does [Rust] have? Does it use a GC (garbage collector)?
 - What does static typing mean? What is a benefit of using it?
@@ -29,6 +29,7 @@ After completing these steps, you should be able to answer (and understand why) 
 - Is [Rust] an OOP language? Is it possible to use SOLID/GRASP? Does it have inheritance?
 
 _Additional_ articles, which may help to understand the above topic better:
+
 - [George He: Thinking in Rust: Ownership, Access, and Memory Safety][19]
 - [Chris Morgan: Rust ownership, the hard way][1]
 - [Adolfo Ochagavía: You are holding it wrong][12]
@@ -49,17 +50,6 @@ _Additional_ articles, which may help to understand the above topic better:
 - [Yurii Shymon: True Observer Pattern with Unsubscribe mechanism using Rust][11]
 - [Clayton Ramsey: I built a garbage collector for a language that doesn't need one][17]
 
-
-
-
-[Cargo]: https://github.com/rust-lang/cargo
-[Cargo Book]: https://doc.rust-lang.org/cargo
-[Rust]: https://www.rust-lang.org
-[Rust Book]: https://doc.rust-lang.org/book
-[Rust By Example]: https://doc.rust-lang.org/rust-by-example
-[Rust FAQ]: https://prev.rust-lang.org/faq.html
-[rustlings]: https://rustlings.cool
-
 [1]: https://chrismorgan.info/blog/rust-ownership-the-hard-way
 [2]: https://aloso.github.io/2021/03/28/module-system.html
 [3]: https://thume.ca/2019/07/14/a-tour-of-metaprogramming-models-for-generics
@@ -79,3 +69,10 @@ _Additional_ articles, which may help to understand the above topic better:
 [17]: https://claytonwramsey.github.io/2023/08/14/dumpster.html
 [18]: https://luk6xff.github.io/other/safe_secure_rust_book/intro/index.html
 [19]: https://cocoindex.io/blogs/rust-ownership-access
+[cargo]: https://github.com/rust-lang/cargo
+[cargo book]: https://doc.rust-lang.org/cargo
+[rust]: https://www.rust-lang.org
+[rust book]: https://doc.rust-lang.org/book
+[rust by example]: https://doc.rust-lang.org/rust-by-example
+[rust faq]: https://prev.rust-lang.org/faq.html
+[rustlings]: https://rustlings.cool
