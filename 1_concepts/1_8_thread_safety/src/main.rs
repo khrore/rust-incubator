@@ -21,6 +21,7 @@ use std::cell::Cell;
 use std::marker::PhantomData;
 use std::rc::Rc;
 use std::sync::{Arc, Mutex};
+use std::thread;
 
 // ============================================================================
 // Type 1: OnlySync (Sync but !Send)
@@ -346,7 +347,6 @@ mod compile_time_tests {
 #[cfg(test)]
 mod runtime_tests {
     use super::*;
-    use std::sync::Arc;
     use std::thread;
 
     // TODO(human): Implement thread safety validation tests
@@ -445,14 +445,20 @@ fn main() {
         handle.join().unwrap();
     }
 
-    println!("   Final value after 5 threads × 10 increments: {}", sync_send.get());
+    println!(
+        "   Final value after 5 threads × 10 increments: {}",
+        sync_send.get()
+    );
 
     // Demonstrate NotSyncNotSend
     println!("\n4. NotSyncNotSend (!Sync and !Send):");
     println!("   - Single-threaded only");
     println!("   - Attempting to use across threads causes compile error");
     let not_sync_send = NotSyncNotSend::new(42);
-    println!("   Created NotSyncNotSend with value: {}", not_sync_send.get());
+    println!(
+        "   Created NotSyncNotSend with value: {}",
+        not_sync_send.get()
+    );
 
     println!("\n=== Run 'cargo test' to see compile-time safety checks ===");
 }
