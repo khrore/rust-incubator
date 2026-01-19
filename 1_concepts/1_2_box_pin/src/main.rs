@@ -22,7 +22,7 @@ impl AddrTracker {
 
 fn main() {
     // Create a tracker and store the initial address
-    let mut tracker = AddrTracker::default();
+    let tracker = AddrTracker::default();
     let mut ptr_to_pinned_tracker: Pin<&mut AddrTracker> = pin!(tracker);
     ptr_to_pinned_tracker.as_mut().check_for_move();
     ptr_to_pinned_tracker.as_mut().check_for_move();

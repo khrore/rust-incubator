@@ -344,9 +344,7 @@ mod tests {
             let result = repo.add(user);
 
             assert!(result.is_err());
-            assert!(result
-                .unwrap_err()
-                .contains("already exists"));
+            assert!(result.unwrap_err().contains("already exists"));
         }
 
         #[test]
@@ -439,9 +437,7 @@ mod tests {
             let result = repo.add(user);
 
             assert!(result.is_err());
-            assert!(result
-                .unwrap_err()
-                .contains("already exists"));
+            assert!(result.unwrap_err().contains("already exists"));
         }
 
         #[test]
@@ -481,8 +477,7 @@ mod tests {
 
         #[test]
         fn test_remove_nonexistent_user() {
-            let mut repo =
-                UserRepositoryDyn::new(HashMapStorage::<u64, User>::new());
+            let mut repo = UserRepositoryDyn::new(HashMapStorage::<u64, User>::new());
             assert_eq!(repo.remove(999), None);
         }
 

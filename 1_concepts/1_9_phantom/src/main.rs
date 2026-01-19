@@ -282,7 +282,10 @@ fn main() {
 
     // Option facts
     let f: Fact<Option<i32>> = Fact::new();
-    println!("Option<T> facts ({} total):", Fact::<Option<i32>>::fact_count());
+    println!(
+        "Option<T> facts ({} total):",
+        Fact::<Option<i32>>::fact_count()
+    );
     for _ in 0..3 {
         println!("  - {}", f.fact());
     }
@@ -291,7 +294,10 @@ fn main() {
 
     // Result facts
     let f: Fact<Result<i32, String>> = Fact::new();
-    println!("Result<T, E> facts ({} total):", Fact::<Result<i32, String>>::fact_count());
+    println!(
+        "Result<T, E> facts ({} total):",
+        Fact::<Result<i32, String>>::fact_count()
+    );
     for _ in 0..3 {
         println!("  - {}", f.fact());
     }
@@ -300,13 +306,25 @@ fn main() {
 
     // Arc facts (important for concurrent systems)
     let f: Fact<std::sync::Arc<i32>> = Fact::new();
-    println!("Arc<T> facts ({} total):", Fact::<std::sync::Arc<i32>>::fact_count());
+    println!(
+        "Arc<T> facts ({} total):",
+        Fact::<std::sync::Arc<i32>>::fact_count()
+    );
     for _ in 0..3 {
         println!("  - {}", f.fact());
     }
 
     println!("\n=== Zero-Cost Verification ===");
-    println!("Size of Fact<Vec<u8>>: {} bytes", std::mem::size_of::<Fact<Vec<u8>>>());
-    println!("Size of Fact<String>: {} bytes", std::mem::size_of::<Fact<String>>());
-    println!("Size of Fact<Arc<u8>>: {} bytes", std::mem::size_of::<Fact<std::sync::Arc<u8>>>());
+    println!(
+        "Size of Fact<Vec<u8>>: {} bytes",
+        std::mem::size_of::<Fact<Vec<u8>>>()
+    );
+    println!(
+        "Size of Fact<String>: {} bytes",
+        std::mem::size_of::<Fact<String>>()
+    );
+    println!(
+        "Size of Fact<Arc<u8>>: {} bytes",
+        std::mem::size_of::<Fact<std::sync::Arc<u8>>>()
+    );
 }

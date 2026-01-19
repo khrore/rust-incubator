@@ -5,7 +5,7 @@ pub trait EventSourced<Ev: ?Sized> {
 pub mod user {
     use std::time::SystemTime;
 
-    use super::{event, EventSourced};
+    use super::{EventSourced, event};
 
     #[derive(Debug)]
     pub struct User {

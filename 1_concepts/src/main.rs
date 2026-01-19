@@ -52,7 +52,7 @@ where
     }
 
     /// Add an element to the back of the list
-    pub fn push_back(&self, data: T) {
+    pub fn push_back(&self, _data: T) {
         // TODO(human): Implement the push_back logic here.
         // This is the core of the data structure where you need to:
         // 1. Create a new node wrapped in Arc<Mutex<>>
@@ -73,7 +73,7 @@ where
     }
 
     /// Add an element to the front of the list
-    pub fn push_front(&self, data: T) {
+    pub fn push_front(&mut self, data: T) {
         let new_node = Arc::new(Mutex::new(Node::new(data)));
 
         match &self.head {
@@ -150,7 +150,7 @@ unsafe impl<T: Send> Send for DoublyLinkedList<T> {}
 unsafe impl<T: Send> Sync for DoublyLinkedList<T> {}
 
 fn main() {
-    let list = DoublyLinkedList::new();
+    let mut list = DoublyLinkedList::new();
 
     // Single-threaded usage
     println!("=== Single-threaded test ===");

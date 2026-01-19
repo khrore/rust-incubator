@@ -1,6 +1,4 @@
-use criterion::{
-    black_box, criterion_group, criterion_main, BenchmarkId, Criterion,
-};
+use criterion::{BenchmarkId, Criterion, black_box, criterion_group, criterion_main};
 use std::borrow::Cow;
 use std::collections::{BTreeMap, HashMap};
 
@@ -447,8 +445,7 @@ fn bench_scale_operations(c: &mut Criterion) {
                 b.iter(|| {
                     let mut repo = UserRepository::new(HashMapStorage::new());
                     for i in 0..size {
-                        let user =
-                            User::new(i, format!("user{}@example.com", i));
+                        let user = User::new(i, format!("user{}@example.com", i));
                         repo.add(user).unwrap();
                     }
                     for i in 0..size {
@@ -465,8 +462,7 @@ fn bench_scale_operations(c: &mut Criterion) {
                 b.iter(|| {
                     let mut repo = UserRepositoryDyn::new(HashMapStorage::new());
                     for i in 0..size {
-                        let user =
-                            User::new(i, format!("user{}@example.com", i));
+                        let user = User::new(i, format!("user{}@example.com", i));
                         repo.add(user).unwrap();
                     }
                     for i in 0..size {
