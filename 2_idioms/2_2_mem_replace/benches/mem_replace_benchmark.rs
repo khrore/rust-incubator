@@ -1,5 +1,5 @@
-use criterion::{black_box, criterion_group, criterion_main, Criterion, BenchmarkId};
-use step_2_2::{original, optimized};
+use criterion::{BenchmarkId, Criterion, black_box, criterion_group, criterion_main};
+use step_2_2::{optimized, original};
 
 // ===== Benchmark rotate() with different types =====
 
@@ -120,10 +120,8 @@ fn bench_resolve_small(c: &mut Criterion) {
 
     group.bench_function("original_clone", |b| {
         b.iter(|| {
-            let mut solver = original::Solver::new(
-                expected_orig.clone(),
-                black_box(unsolved_orig.clone()),
-            );
+            let mut solver =
+                original::Solver::new(expected_orig.clone(), black_box(unsolved_orig.clone()));
             solver.resolve();
             black_box(&solver);
         });
@@ -131,10 +129,8 @@ fn bench_resolve_small(c: &mut Criterion) {
 
     group.bench_function("optimized_take", |b| {
         b.iter(|| {
-            let mut solver = optimized::Solver::new(
-                expected_opt.clone(),
-                black_box(unsolved_opt.clone()),
-            );
+            let mut solver =
+                optimized::Solver::new(expected_opt.clone(), black_box(unsolved_opt.clone()));
             solver.resolve();
             black_box(&solver);
         });
@@ -176,10 +172,8 @@ fn bench_resolve_medium(c: &mut Criterion) {
 
     group.bench_function("original_clone", |b| {
         b.iter(|| {
-            let mut solver = original::Solver::new(
-                expected_orig.clone(),
-                black_box(unsolved_orig.clone()),
-            );
+            let mut solver =
+                original::Solver::new(expected_orig.clone(), black_box(unsolved_orig.clone()));
             solver.resolve();
             black_box(&solver);
         });
@@ -187,10 +181,8 @@ fn bench_resolve_medium(c: &mut Criterion) {
 
     group.bench_function("optimized_take", |b| {
         b.iter(|| {
-            let mut solver = optimized::Solver::new(
-                expected_opt.clone(),
-                black_box(unsolved_opt.clone()),
-            );
+            let mut solver =
+                optimized::Solver::new(expected_opt.clone(), black_box(unsolved_opt.clone()));
             solver.resolve();
             black_box(&solver);
         });
@@ -232,10 +224,8 @@ fn bench_resolve_large_vecs(c: &mut Criterion) {
 
     group.bench_function("original_clone", |b| {
         b.iter(|| {
-            let mut solver = original::Solver::new(
-                expected_orig.clone(),
-                black_box(unsolved_orig.clone()),
-            );
+            let mut solver =
+                original::Solver::new(expected_orig.clone(), black_box(unsolved_orig.clone()));
             solver.resolve();
             black_box(&solver);
         });
@@ -243,10 +233,8 @@ fn bench_resolve_large_vecs(c: &mut Criterion) {
 
     group.bench_function("optimized_take", |b| {
         b.iter(|| {
-            let mut solver = optimized::Solver::new(
-                expected_opt.clone(),
-                black_box(unsolved_opt.clone()),
-            );
+            let mut solver =
+                optimized::Solver::new(expected_opt.clone(), black_box(unsolved_opt.clone()));
             solver.resolve();
             black_box(&solver);
         });

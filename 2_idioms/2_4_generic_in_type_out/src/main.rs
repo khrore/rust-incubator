@@ -211,8 +211,8 @@ impl From<usize> for MaxConnections {
 #[derive(Debug, Clone)]
 pub struct Server {
     address: Option<SocketAddr>,
-    workers: WorkerCount,  // Number of worker threads for high concurrency
-    max_connections: MaxConnections,  // Connection pool limits
+    workers: WorkerCount, // Number of worker threads for high concurrency
+    max_connections: MaxConnections, // Connection pool limits
 }
 
 impl Default for Server {
@@ -221,7 +221,7 @@ impl Default for Server {
         Self {
             address: None,
             workers: WorkerCount::from(num_cpus_estimate()),
-            max_connections: MaxConnections::from(10_000),   // Reasonable default for high-load
+            max_connections: MaxConnections::from(10_000), // Reasonable default for high-load
         }
     }
 }
@@ -353,7 +353,10 @@ mod server_spec {
             assert!(valid_server.validate().is_ok());
 
             let invalid_server = Server::default();
-            assert_eq!(invalid_server.validate().unwrap_err(), ValidationError::MissingAddress);
+            assert_eq!(
+                invalid_server.validate().unwrap_err(),
+                ValidationError::MissingAddress
+            );
         }
     }
 
@@ -375,8 +378,7 @@ mod server_spec {
             assert_eq!(err2.message(), "Request timed out");
 
             // Test with From conversion
-            let err3 = Error::new("UNAUTHORIZED")
-                .with_message("Not authorized");
+            let err3 = Error::new("UNAUTHORIZED").with_message("Not authorized");
             assert_eq!(err3.code(), "UNAUTHORIZED");
             assert_eq!(err3.message(), "Not authorized");
         }
