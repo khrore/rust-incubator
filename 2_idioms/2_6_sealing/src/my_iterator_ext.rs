@@ -9,7 +9,31 @@ use std::fmt;
 use self::format::{Format, FormatWith};
 
 /// Extension trait for an [`Iterator`].
-pub trait MyIteratorExt: Iterator {
+///
+/// This trait is **sealed** and cannot be implemented outside this crate.
+///
+/// # Sealing Proof
+///
+/// The following example demonstrates that external crates cannot implement
+/// this trait:
+///
+/// ```compile_fail
+/// use step_2_6::MyIteratorExt;
+///
+/// struct ExternalIterator;
+///
+/// impl Iterator for ExternalIterator {
+///     type Item = i32;
+///     fn next(&mut self) -> Option<Self::Item> {
+///         None
+///     }
+/// }
+///
+/// // ERROR: the trait bound `ExternalIterator: my_iterator_ext::format::Sealed`
+/// // is not satisfied
+/// impl MyIteratorExt for ExternalIterator {}
+/// ```
+pub trait MyIteratorExt: format::Sealed + Iterator {
     /// Format all iterator elements, separated by `sep`.
     ///
     /// All elements are formatted (any formatting trait)
@@ -25,7 +49,7 @@ pub trait MyIteratorExt: Iterator {
     ///     format!("{:.2}", data.iter().format(", ")),
     ///            "1.10, 2.72, -3.00");
     /// ```
-    fn format(self, sep: &str) -> Format<Self>
+    fn format(self, sep: &str) -> Format<'_, Self>
     where
         Self: Sized,
     {
@@ -61,7 +85,7 @@ pub trait MyIteratorExt: Iterator {
     /// });
     /// assert_eq!(matrix_formatter.to_string(), "1, 2, 3\n4, 5, 6");
     /// ```
-    fn format_with<F>(self, sep: &str, format: F) -> FormatWith<Self, F>
+    fn format_with<F>(self, sep: &str, format: F) -> FormatWith<'_, Self, F>
     where
         Self: Sized,
         F: FnMut(Self::Item, &mut dyn FnMut(&dyn fmt::Display) -> fmt::Result) -> fmt::Result,
@@ -70,7 +94,7 @@ pub trait MyIteratorExt: Iterator {
     }
 }
 
-impl<T> MyIteratorExt for T where T: Iterator {}
+impl<T> MyIteratorExt for T where T: format::Sealed + Iterator {}
 
 mod format {
     use std::{cell::RefCell, fmt};
@@ -192,4 +216,8 @@ mod format {
     impl_format! {
         Display Debug UpperExp LowerExp UpperHex LowerHex Octal Binary Pointer
     }
+
+    pub trait Sealed {}
+
+    impl<T: Iterator> Sealed for T {}
 }
