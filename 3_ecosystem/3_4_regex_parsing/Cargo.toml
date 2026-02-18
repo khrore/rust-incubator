@@ -3,3 +3,9 @@ name = "step_3_4"
 version = "0.1.0"
 edition = "2024"
 publish = false
+
+[dependencies]
+once_cell = "1.21"
+regex = "1.11"
+thiserror = "2.0"
+unicode-ident = "1.0"
