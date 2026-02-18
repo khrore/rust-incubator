@@ -35,6 +35,7 @@
             ])
             pkgs.rust-analyzer-nightly
             pkgs.apacheKafka
+            pkgs.uv
           ];
         };
       }
